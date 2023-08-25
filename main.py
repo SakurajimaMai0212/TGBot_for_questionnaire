@@ -3,19 +3,6 @@ import config
 from telebot import types
 import sqlite3
 
-config.admin = int(input('Введите ID человека, которому будут отправляться абсолютно все анкеты:'))
-
-print('Введите название города и через пробел ID человека, которому будет отправлена анкета через Enter (Пример: Москва 000000). Если вы хотите закончить заполнение, то впишите - и нажмите Enter:')
-
-while True:
-    name_city = input('')
-    if name_city == '-':
-        break
-
-    name_city = name_city.split(' ')
-    config.mas.update({name_city[0] : int(name_city[1])})
-    config.mas_cities.append(name_city[0])
-
 bot = telebot.TeleBot(config.TOKEN)
 
 connection = sqlite3.connect('my_database.db', check_same_thread=False)
